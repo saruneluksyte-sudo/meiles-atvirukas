@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#e9a4a2">
+<meta name="description" content="Maža širdis. Dideli jausmai. Romantiškas atvirukas tau.">
+<title>Tau, iš širdies ❤️</title>
+<style>
+:root{color-scheme:light;--ink:#653c50;--cream:#fff7ed}
+*{box-sizing:border-box}body{margin:0;min-height:100svh;background:#eab0a8;color:var(--ink);font-family:Georgia,'Times New Roman',serif}button{font:inherit;-webkit-tap-highlight-color:transparent}button:focus-visible{outline:3px solid #713448;outline-offset:8px}
+.landscape{position:fixed;inset:0;overflow:hidden;z-index:-1;background:linear-gradient(180deg,#b5a7c7 0%,#deb1bd 27%,#f4b8a5 49%,#ffd4a3 67%,#e9b5ad 68%,#baa9bb 100%)}
+.sun{position:absolute;width:clamp(150px,28vw,310px);aspect-ratio:1;border-radius:50%;background:#ffe4b2;left:50%;top:48%;transform:translate(-50%,-50%);box-shadow:0 0 90px 40px #ffd4ac80}
+.water{position:absolute;inset:67% 0 0;background:repeating-linear-gradient(180deg,transparent 0 15px,#fff0d51c 16px 17px,transparent 18px 29px),linear-gradient(#dbb0b3aa,#998fae99)}
+.reflection{position:absolute;top:68%;bottom:0;left:35%;width:30%;background:linear-gradient(#ffe5b9aa,transparent);clip-path:polygon(35% 0,65% 0,100% 100%,0 100%);filter:blur(9px)}
+.hill{position:absolute;bottom:-14%;height:30%;width:80%;background:#867d9b80;border-radius:50% 90% 0 0;transform:rotate(8deg);left:-25%}.hill.right{left:auto;right:-36%;bottom:-19%;height:34%;background:#756f8c80;transform:rotate(-12deg)}
+.grain{position:absolute;inset:0;opacity:.15;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' opacity='.5' d='M0 0h180v180H0z'/%3E%3C/svg%3E")}
+main{min-height:100svh;display:flex;align-items:center;flex-direction:column;text-align:center;padding:max(42px,env(safe-area-inset-top)) 24px max(25px,env(safe-area-inset-bottom));position:relative}
+.eyebrow{font:11px/1.6 Arial,sans-serif;letter-spacing:.32em;text-transform:uppercase;margin:0 0 21px}.ornament{display:flex;align-items:center;gap:12px;opacity:.65;font-size:15px}.ornament:before,.ornament:after{content:'';height:1px;width:45px;background:currentColor}
+h1{font-size:clamp(42px,8vw,72px);font-weight:normal;line-height:1.1;letter-spacing:-.045em;margin:20px 0 13px}h1 em{font-weight:normal}.intro{font-size:16px;line-height:1.7;margin:0;opacity:.8}
+.stage{flex:1;display:grid;place-items:center;width:100%;min-height:345px;padding:35px 0;perspective:1000px;position:relative}
+.heart-button{position:relative;display:grid;place-items:center;width:270px;height:250px;background:none;border:0;cursor:pointer;color:#fff5ee;filter:drop-shadow(0 18px 25px #9c40554d);animation:pulse 2.8s ease-in-out infinite;transition:opacity .5s,transform .8s}
+.heart-button svg{position:absolute;width:100%;height:100%;overflow:visible}.heart-label{position:relative;font:16px Arial,sans-serif;padding-bottom:12px;text-shadow:0 1px 8px #9b233e}.heart-label small{display:block;font-size:9px;letter-spacing:.23em;text-transform:uppercase;margin-top:12px;opacity:.72}
+.heart-button:hover{filter:drop-shadow(0 18px 35px #9c405578)}
+.letter{grid-area:1/1;max-width:410px;width:100%;padding:33px 26px 25px;background:#fff9f0ed;border:1px solid #ffffff9c;border-radius:120px 120px 14px 14px;box-shadow:0 20px 65px #76485a24;opacity:0;transform:translateY(25px) rotateX(-12deg) scale(.85);visibility:hidden;transition:opacity .7s,transform .8s cubic-bezier(.2,.8,.2,1),visibility .7s}
+.heart-button{grid-area:1/1}.letter .tiny-heart{font-size:27px;color:#bd4c62;margin-bottom:17px}.letter h2{font-size:12px;font-family:Arial,sans-serif;letter-spacing:.23em;text-transform:uppercase;font-weight:normal;margin:0 0 21px}.letter blockquote{font-size:clamp(22px,5vw,28px);line-height:1.5;margin:0}.signature{font-style:italic;font-size:15px;margin:22px 0;color:#9a6876}.close{border:1px solid #d7b6b6;background:transparent;border-radius:30px;padding:11px 23px;color:var(--ink);cursor:pointer;font:12px Arial,sans-serif;transition:background .2s}.close:hover{background:#f3dfe0}
+.open .heart-button{opacity:0;transform:scale(1.5) rotateY(75deg);pointer-events:none;animation:none}.open .letter{opacity:1;transform:none;visibility:visible;transition-delay:.15s}
+footer{font:10px/1.8 Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;opacity:.72;margin-top:12px}.footer-heart{color:#a94c64;margin:0 5px}.floating{position:fixed;inset:0;pointer-events:none;overflow:hidden}.particle{position:absolute;bottom:-40px;color:#fff5ed;font-size:var(--size);opacity:0;animation:float var(--duration) linear infinite;animation-delay:var(--delay);left:var(--left)}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.055)}}@keyframes float{0%{transform:translateY(0) rotate(-15deg);opacity:0}12%,75%{opacity:.45}100%{transform:translateY(-110vh) translateX(35px) rotate(25deg);opacity:0}}
+@media(max-width:380px){main{padding:30px 18px 20px}h1{font-size:42px}.stage{min-height:325px}.letter{padding:26px 22px 22px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.particle{display:none}}
+</style>
+</head>
+<body>
+<div class="landscape" aria-hidden="true"><div class="sun"></div><div class="water"></div><div class="reflection"></div><div class="hill"></div><div class="hill right"></div><div class="grain"></div></div>
+<div class="floating" aria-hidden="true" id="floating"></div>
+<main>
+<p class="eyebrow">Maža širdis · dideli jausmai</p>
+<div class="ornament" aria-hidden="true">♡</div>
+<h1>Tau, <em>iš širdies.</em></h1>
+<p class="intro">Kai jausmai netelpa žodžiuose,<br>juos pasako širdis.</p>
+<div class="stage" id="stage">
+<button class="heart-button" id="open" type="button" aria-expanded="false" aria-controls="letter" aria-label="Paliesk mane ❤️ — atidaryti atviruką">
+<svg viewBox="0 0 280 260" aria-hidden="true"><defs><linearGradient id="red" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ef6b79"/><stop offset=".5" stop-color="#d6405b"/><stop offset="1" stop-color="#ae284a"/></linearGradient><radialGradient id="shine"><stop stop-color="#ffa7ac" stop-opacity=".5"/><stop offset="1" stop-color="#ffa7ac" stop-opacity="0"/></radialGradient></defs><path fill="url(#red)" d="M140 244C117 226 14 160 9 94C3 19 99 0 140 61C181 0 277 19 271 94C266 160 163 226 140 244Z"/><ellipse cx="83" cy="66" rx="60" ry="48" fill="url(#shine)"/></svg>
+<span class="heart-label">Paliesk mane ❤️<small>Čia slepiasi kai kas tau</small></span>
+</button>
+<section class="letter" id="letter" aria-labelledby="letter-title" inert>
+<div class="tiny-heart" aria-hidden="true">♥</div><h2 id="letter-title">Tik tau</h2>
+<blockquote>„Kartais vienas žmogus gali sukelti daugiau jausmų nei tūkstančiai žodžių... ❤️“</blockquote>
+<p class="signature">Ir tas žmogus esi tu.</p>
+<button class="close" id="close" type="button">Užverti atviruką <span aria-hidden="true">♡</span></button>
+</section>
+</div>
+<footer>Sukurta su <span class="footer-heart">♥</span> skirta tau</footer>
+</main>
+<script>
+const stage=document.getElementById('stage');
+const openButton=document.getElementById('open');
+const closeButton=document.getElementById('close');
+const letter=document.getElementById('letter');
+function toggleCard(isOpen){
+ stage.classList.toggle('open',isOpen);
+ openButton.setAttribute('aria-expanded',String(isOpen));
+ letter.inert=!isOpen;
+ openButton.inert=isOpen;
+ (isOpen?closeButton:openButton).focus({preventScroll:true});
+}
+openButton.addEventListener('click',()=>toggleCard(true));
+closeButton.addEventListener('click',()=>toggleCard(false));
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&stage.classList.contains('open'))toggleCard(false)});
+const floating=document.getElementById('floating');
+for(let i=0;i<15;i++){
+ const heart=document.createElement('span');heart.className='particle';heart.textContent=i%3?'♡':'♥';
+ heart.style.cssText=`--left:${(i*7+3)%100}%;--size:${12+(i%4)*5}px;--duration:${14+i%7}s;--delay:-${i*1.7}s`;
+ floating.appendChild(heart);
+}
+</script>
+</body>
+</html>
